@@ -1,7 +1,7 @@
 import react from 'react'
 import { BrowserRouter , Route , Routes } from "react-router-dom"
-import SignInForm from "./auth/forms/signInForm"
-import SignUpForm from "./auth/forms/signUpForm"
+import SignInForm from "./auth/forms/SignInForm"
+import SignUpForm from "./auth/forms/SignUpForm"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import NewsArtical from "./pages/NewsArtical"
