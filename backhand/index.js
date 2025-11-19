@@ -17,6 +17,7 @@ mongoose
 const app = express();
 
 // === FIXED CORS ===
+// === FIXED CORS (WORKS FOR VERCEL + RENDER) ===
 const allowedOrigins = [
   "http://localhost:5173",
   "https://the-public-post-vmmm.vercel.app",
@@ -27,14 +28,23 @@ const allowedOrigins = [
 
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"],
     credentials: true,
   })
 );
 
-// Required for some hosts
+// Required for cross-site cookies
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
 
