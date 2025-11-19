@@ -7,25 +7,20 @@ import { fileURLToPath } from "url"
 const _filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(_filename)
 
-// https://vite.dev/config/
 export default defineConfig({
 
-  
   css: {
-    transformer: 'lightningcss'
-  }
-,
+    transformer: "postcss"
+  },
 
-
-server:{
-  proxy:{
-    "/api":{
-      target : "http://localhost:5000",
-      secure : false,
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:5000",
+        secure: false,
+      },
     },
   },
-},
-
 
   plugins: [react(), tailwindcss()],
   resolve: {
