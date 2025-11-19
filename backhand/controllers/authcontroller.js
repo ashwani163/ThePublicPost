@@ -7,12 +7,13 @@ import jwt from "jsonwebtoken";
 const setTokenCookie = (res, token) => {
   const isLocal = process.env.NODE_ENV !== "production"; // true on localhost
 
-  res.cookie("access_token", token, {
-    httpOnly: true,
-    secure: !isLocal,            // ✅ false on localhost, true in production
-    sameSite: isLocal ? "lax" : "none", // ✅ allows cross-origin on localhost
-    maxAge: 24 * 60 * 60 * 1000,
-  });
+ res.cookie("access_token", token, {
+  httpOnly: true,
+  secure: true,        // ✅ required for HTTPS cross-domain
+  sameSite: "none",    // ✅ required for cross-domain cookies
+  maxAge: 24 * 60 * 60 * 1000,
+});
+
 };
 
 

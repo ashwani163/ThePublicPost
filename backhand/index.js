@@ -16,40 +16,32 @@ mongoose
 
 const app = express();
 
-// === FIXED CORS ===
-// === FIXED CORS (WORKS FOR VERCEL + RENDER) ===
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://the-public-post-vmmm.vercel.app",
-  "https://the-public-post-l4ml.vercel.app",
-  "https://the-public-post-l4ml-git-main-ashwani-kumars-projects-7a83d460.vercel.app",
-  "https://the-public-post-l4ml-1rneodbyx-ashwani-kumars-projects-7a83d460.vercel.app"
-];
+app.set("trust proxy", 1);
 
+// CORS setup for Vercel frontend
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type"],
-    credentials: true,
+    origin: [
+      "http://localhost:5173", 
+      "https://the-public-post-vmmm.vercel.app"
+    ],
+    credentials: true,  // ✅ allow cookies to be sent
   })
 );
 
-// Required for cross-site cookies
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
+// Needed for preflight requests (PUT, DELETE, etc.)
+app.options("*", cors({
+  origin: [
+    "http://localhost:5173", 
+    "https://the-public-post-vmmm.vercel.app"
+  ],
+  credentials: true,
+}));
 
 app.use(express.json());
 app.use(cookieParser());
+
+a
 
 // === ROUTES ===
 app.use("/api/auth", authRoutes);
