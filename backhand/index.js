@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authroutes.js";
 import userRoutes from "./routes/userroute.js";
-import postRoutes from "./routes/postroute.js" 
+import postRoutes from "./routes/postroute.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -16,13 +16,13 @@ mongoose
 
 const app = express();
 
-// === CORS MUST BE FIRST ===
+// === FIXED CORS ===
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://the-public-post-vmmm.vercel.app/",
-  "https://the-public-post-l4ml.vercel.app/",
-   "https://the-public-post-l4ml-git-main-ashwani-kumars-projects-7a83d460.vercel.app/",
-   "https://the-public-post-l4ml-1rneodbyx-ashwani-kumars-projects-7a83d460.vercel.app/"
+  "https://the-public-post-vmmm.vercel.app",
+  "https://the-public-post-l4ml.vercel.app",
+  "https://the-public-post-l4ml-git-main-ashwani-kumars-projects-7a83d460.vercel.app",
+  "https://the-public-post-l4ml-1rneodbyx-ashwani-kumars-projects-7a83d460.vercel.app"
 ];
 
 app.use(
@@ -32,8 +32,7 @@ app.use(
   })
 );
 
-
-// Required on some hosts (Render included)
+// Required for some hosts
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Credentials", "true");
   next();
