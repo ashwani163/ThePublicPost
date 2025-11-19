@@ -19,7 +19,10 @@ const app = express();
 // === CORS MUST BE FIRST ===
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://the-public-post-vmmm.vercel.app/"
+  "https://the-public-post-vmmm.vercel.app/",
+  "https://the-public-post-l4ml.vercel.app/",
+   "https://the-public-post-l4ml-git-main-ashwani-kumars-projects-7a83d460.vercel.app/",
+   "https://the-public-post-l4ml-1rneodbyx-ashwani-kumars-projects-7a83d460.vercel.app/"
 ];
 
 app.use(
