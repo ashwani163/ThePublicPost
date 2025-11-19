@@ -7,7 +7,7 @@ import About from "./pages/About"
 import NewsArtical from "./pages/NewsArtical"
 import Dashboard from "./pages/Dashboard"
 import Header from "./components/shared/Header"
-import Footer from './components/shared/footer'
+import Footer from './components/shared/Footer'
 import PrivateRoute from './components/shared/PrivateRoute'
 import CreatePost from './pages/CreatePost'
 import AdminPrivateRoute from './components/shared/AdminPrivateRoute'
