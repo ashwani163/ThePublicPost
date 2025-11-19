@@ -90,10 +90,10 @@ const DashboardProfile = () => {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updateProfile),
+            credentials: "include", // ✅ add this
+
       },
-    {
-    credentials: "include", // ✅ add this
-          })
+              )
 
       // ✅ check HTTP status
       if (!res.ok) {
@@ -119,8 +119,7 @@ const DashboardProfile = () => {
 
       const res = await fetch(`${baseURL}/api/user/delete/${currentUser._id}`, {
         method: "DELETE",
-      },
-    {
+    
     credentials: "include", // ✅ add this
           })
 
@@ -141,8 +140,7 @@ const DashboardProfile = () => {
     try {
       const res = await fetch(`${baseURL}/api/user/signout`, {
         method: "POST",
-      },
-    {
+     
     credentials: "include", // ✅ add this
           })
 

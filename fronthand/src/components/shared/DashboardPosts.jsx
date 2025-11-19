@@ -95,8 +95,7 @@ const DashboardPosts = () => {
         `${baseURL}/api/post/deletepost/${postIdToDelete}/${currentUser._id}`,
         {
           method: "DELETE",
-        },
-        {
+       
     credentials: "include", // ✅ add this
           }
       )

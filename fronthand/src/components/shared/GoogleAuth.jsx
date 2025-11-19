@@ -30,8 +30,7 @@ const GoogleAuth = () => {
           email: firebaseResponse.user.email,
           profilePhotoUrl: firebaseResponse.user.photoURL,
         }),
-      },
-    {
+   
     credentials: "include", // ✅ add this
           })
 

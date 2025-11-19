@@ -91,8 +91,7 @@ const DashboardUsers = () => {
  try {
       const res = await fetch(`${baseURL}/api/user/delete/${userIdToDelete}`, {
         method: "DELETE",
-      },
-    {
+    
     credentials: "include", // ✅ add this
           })
 

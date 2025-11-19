@@ -18,8 +18,7 @@ const DashboardSidebar = () => {
     try {
       const res = await fetch(`${baseURL}/api/user/signout`, {
         method: "POST",
-      },
-    {
+     
     credentials: "include", // ✅ add this
           })
 
