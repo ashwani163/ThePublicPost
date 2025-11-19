@@ -9,6 +9,14 @@ const __dirname = path.dirname(_filename)
 
 // https://vite.dev/config/
 export default defineConfig({
+
+  
+  css: {
+    transformer: 'lightningcss'
+  }
+,
+
+
 server:{
   proxy:{
     "/api":{

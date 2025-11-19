@@ -60,6 +60,9 @@
   },
 
   "overrides": {
-    "rollup": "4.9.5"
+    "rollup": "4.9.5",
+    "lightningcss": "1.25.1"
   }
+
+
 }
