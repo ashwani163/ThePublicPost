@@ -1,5 +1,5 @@
 import BottomNavBar from "@/components/shared/BottomNavBar"
-import DashboardPosts from "@/components/shared/dashboardPosts"
+import DashboardPosts from "@/components/shared/DashboardPosts"
 import DashboardProfile from "@/components/shared/DashboardProfile"
 import DashboardSidebar from "@/components/shared/DashboardSidebar"
 import DashboardUsers from "@/components/shared/DashboardUsers"
