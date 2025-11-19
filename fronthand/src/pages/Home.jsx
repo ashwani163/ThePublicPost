@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+const baseURL = import.meta.env.VITE_API_URL || "";
 
 const Home = () => {
   const [posts, setPosts] = useState([])
@@ -11,7 +12,11 @@ const Home = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await fetch("/api/post/getPosts?limit=6")
+      const res = await fetch(`${baseURL}/api/post/getPosts?limit=6`,
+        {
+    credentials: "include", // ✅ add this
+          }
+      )
 
       const data = await res.json()
 

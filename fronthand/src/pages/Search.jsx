@@ -13,6 +13,7 @@ import {
 import { Separator } from "@/components/ui/separator"
 import React, { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
+const baseURL = import.meta.env.VITE_API_URL || "";
 
 const Search = () => {
   const location = useLocation()
@@ -55,7 +56,11 @@ const Search = () => {
 
       const searchQuery = urlParams.toString()
 
-      const res = await fetch(`/api/post/getposts?${searchQuery}`)
+      const res = await fetch(`${baseURL}/api/post/getposts?${searchQuery}`,
+        {
+    credentials: "include", // ✅ add this
+          }
+      )
 
       if (!res.ok) {
         setLoading(false)
@@ -107,7 +112,11 @@ const Search = () => {
 
     const searchQuery = urlParams.toString()
 
-    const res = await fetch(`/api/post/getposts?${searchQuery}`)
+    const res = await fetch(`${baseURL}/api/post/getposts?${searchQuery}`,
+      {
+    credentials: "include", // ✅ add this
+          }
+    )
 
     if (!res.ok) {
       return

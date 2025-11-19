@@ -1,6 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+const baseURL = import.meta.env.VITE_API_URL || "";
+
+
 const Footer = () => {
   return (
     <div className="bg-gray-900 text-white py-8">

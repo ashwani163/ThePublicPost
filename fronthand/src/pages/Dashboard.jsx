@@ -6,6 +6,7 @@ import DashboardUsers from "@/components/shared/DashboardUsers"
 //import MainDashboard from "@/components/shared/MainDashboard"
 import React, { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
+const baseURL = import.meta.env.VITE_API_URL || "";
 
 const Dashboard = () => {
   const location = useLocation()

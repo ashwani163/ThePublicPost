@@ -6,6 +6,9 @@ import { Link } from "react-router-dom"
 import { IoIosCreate, IoIosDocument } from "react-icons/io"
 import { MdDashboardCustomize } from "react-icons/md"
 
+const baseURL = import.meta.env.VITE_API_URL || "";
+
+
 const DashboardSidebar = () => {
   const dispatch = useDispatch()
 
@@ -13,9 +16,12 @@ const DashboardSidebar = () => {
 
   const handleSignout = async () => {
     try {
-      const res = await fetch("/api/user/signout", {
+      const res = await fetch(`${baseURL}/api/user/signout`, {
         method: "POST",
-      })
+      },
+    {
+    credentials: "include", // ✅ add this
+          })
 
       const data = await res.json()
 

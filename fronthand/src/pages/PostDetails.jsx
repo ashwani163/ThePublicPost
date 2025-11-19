@@ -3,6 +3,7 @@ import { Separator } from "@/components/ui/separator"
 import React, { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import PostCard from "@/components/shared/PostCard"
+const baseURL = import.meta.env.VITE_API_URL || "";
 
 
 const PostDetails = () => {
@@ -22,7 +23,7 @@ const PostDetails = () => {
       try {
         setLoading(true)
 
-        const res = await fetch(`/api/post/getposts?slug=${postSlug}`,
+        const res = await fetch(`${baseURL}/api/post/getposts?slug=${postSlug}`,
           {
     credentials: "include", // ✅ add this
           }
@@ -54,7 +55,11 @@ const PostDetails = () => {
     useEffect(() => {
     try {
       const fetchRecentPosts = async () => {
-        const res = await fetch(`/api/post/getposts?limit=3`)
+        const res = await fetch(`${baseURL}/api/post/getposts?limit=3`,
+          {
+    credentials: "include", // ✅ add this
+          }
+        )
 
         const data = await res.json()
 

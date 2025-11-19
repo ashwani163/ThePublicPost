@@ -19,6 +19,7 @@ const app = express();
 // === CORS MUST BE FIRST ===
 const allowedOrigins = [
   "http://localhost:5173",
+  "https://the-public-post-vmmm.vercel.app/"
 ];
 
 app.use(

@@ -6,6 +6,10 @@ import { useDispatch } from "react-redux"
 import { signInSuccess } from "@/redux/user/userSlice"
 import { useNavigate } from "react-router-dom"
 
+
+const baseURL = import.meta.env.VITE_API_URL || "";
+
+
 const GoogleAuth = () => {
   const auth = getAuth(app)
   const dispatch = useDispatch()
@@ -18,7 +22,7 @@ const GoogleAuth = () => {
     try {
       const firebaseResponse = await signInWithPopup(auth, provider)
 
-      const res = await fetch("/api/auth/google", {
+      const res = await fetch(`${baseURL}/api/auth/google`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -26,7 +30,10 @@ const GoogleAuth = () => {
           email: firebaseResponse.user.email,
           profilePhotoUrl: firebaseResponse.user.photoURL,
         }),
-      })
+      },
+    {
+    credentials: "include", // ✅ add this
+          })
 
       const data = await res.json()
 

@@ -17,6 +17,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { toast } from "sonner"
 import GoogleAuth from "@/components/shared/GoogleAuth"
+const baseURL = import.meta.env.VITE_API_URL || "";
 
 const formSchema = z.object({
   username: z.string().min(6, {message : "username must have atleast 6 character"}).max(50),
@@ -44,11 +45,14 @@ const signUpForm = () => {
       setLoading(true)
       setErrorMessage(null)
 
-      const res = await fetch("/api/auth/signup", {
+      const res = await fetch( `${baseURL}/api/auth/signup`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(values),
-      })
+      },
+    {
+    credentials: "include", // ✅ add this
+          })
       const data = await res.json()
       if(data.success === false){
         setLoading(false)

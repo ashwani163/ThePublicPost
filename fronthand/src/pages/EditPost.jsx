@@ -18,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+const baseURL = import.meta.env.VITE_API_URL || "";
 
 const EditPost = () => {
   const { postId } = useParams()
@@ -38,7 +39,11 @@ const EditPost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(`/api/post/getposts?postId=${postId}`)
+        const res = await axios.get(`${baseURL}/api/post/getposts?postId=${postId}`,
+          {
+    credentials: "include", // ✅ add this
+          }
+        )
         const data = res.data.posts?.[0]
         if (data) {
           setTitle(data.title)
@@ -110,13 +115,16 @@ const EditPost = () => {
       }
 
       const res = await axios.put(
-        `/api/post/updatepost/${postId}/${currentUser._id}`,
+        `${baseURL}/api/post/updatepost/${postId}/${currentUser._id}`,
         updatedData,
-        { withCredentials: true }
+        { withCredentials: true },
+        {
+    credentials: "include", // ✅ add this
+          }
       )
 
       toast.success(res.data?.message || "Post updated successfully!")
-      navigate(`/post/${res.data.slug || postId}`)
+      navigate(`${baseURL}/post/${res.data.slug || postId}`)
     } catch (error) {
       console.error(error.response?.data || error)
       toast.error(error.response?.data?.message || "Failed to update post")
