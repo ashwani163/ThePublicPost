@@ -18,30 +18,31 @@ const app = express();
 
 app.set("trust proxy", 1);
 
-// CORS setup for Vercel frontend
+// CORS setup
 app.use(
   cors({
     origin: [
-      "http://localhost:5173", 
-      "https://the-public-post-vmmm.vercel.app"
+      "http://localhost:5173",
+      "https://the-public-post-vmmm.vercel.app",
     ],
-    credentials: true,  // ✅ allow cookies to be sent
+    credentials: true,
   })
 );
 
-// Needed for preflight requests (PUT, DELETE, etc.)
-app.options("*", cors({
-  origin: [
-    "http://localhost:5173", 
-    "https://the-public-post-vmmm.vercel.app"
-  ],
-  credentials: true,
-}));
+// Preflight requests – FIXED
+app.options(
+  "/*",
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://the-public-post-vmmm.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(cookieParser());
-
-a
 
 // === ROUTES ===
 app.use("/api/auth", authRoutes);
