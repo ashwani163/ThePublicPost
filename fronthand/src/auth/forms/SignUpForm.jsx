@@ -89,7 +89,7 @@ const signUpForm = () => {
               Create a new account
             </h2>
             <p className=" text-slate-500 text-[14px] font-medium leading-[140%] md-text-[16px] md:font-normal mt-2">
-              Welcome to The PublicPost, Please provide your details
+              Welcome to ThePublicPost, Please provide your details
             </p>
         </div>
         {/*right*/}

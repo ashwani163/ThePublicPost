@@ -32,7 +32,7 @@ const Home = () => {
     <div>
       <div className="flex flex-col gap-6 p-28 max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold text-blue-800">
-          Welcome to <span className="text-red-600"> Morning Dispatch</span>
+          Welcome to <span className="text-red-600"> ThePublicPost</span>
         </h1>
 
         <p className="text-gray-600 mt-3 text-lg">
@@ -52,7 +52,7 @@ const Home = () => {
       <section className="pb-16 bg-white">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8 text-gray-800">
-            Why You'll Love Morning Dispatch
+            Why You'll Love ThePublicPost
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

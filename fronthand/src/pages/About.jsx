@@ -45,7 +45,7 @@ const About = () => {
             />
 
             <h3 className="text-xl font-semibold text-gray-700">
-              Jaime Lannister
+              Ashwani kumar Prajapat
             </h3>
 
             <p className="text-gray-500">CEO</p>
@@ -59,7 +59,7 @@ const About = () => {
             />
 
             <h3 className="text-xl font-semibold text-gray-700">
-              Cersei Lannister
+              Nikil Prajapat
             </h3>
 
             <p className="text-gray-500">CTO</p>
@@ -73,7 +73,7 @@ const About = () => {
             />
 
             <h3 className="text-xl font-semibold text-gray-700">
-              Daenerys Targaryen
+              Anjali & Dimpi 
             </h3>
 
             <p className="text-gray-500">Lead Designer</p>

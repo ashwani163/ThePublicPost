@@ -119,7 +119,7 @@ const handleUploadImage = async () => {
       setImagePreview(null)
       setImageURL("")
 
-      navigate("/posts")
+      navigate("/news")
     } catch (error) {
       console.error(error.response?.data || error)
       toast.error(error.response?.data?.message || "Failed to publish post")
