@@ -118,13 +118,11 @@ const EditPost = () => {
         `${baseURL}/api/post/updatepost/${postId}/${currentUser._id}`,
         updatedData,
         { withCredentials: true },
-        {
-    credentials: "include", // ✅ add this
-          }
+     
       )
 
       toast.success(res.data?.message || "Post updated successfully!")
-      navigate(`${baseURL}/post/${res.data.slug || postId}`)
+      navigate(`/post/${res.data.slug || postId}`)
     } catch (error) {
       console.error(error.response?.data || error)
       toast.error(error.response?.data?.message || "Failed to update post")

@@ -25,13 +25,14 @@ const GoogleAuth = () => {
       const res = await fetch(`${baseURL}/api/auth/google`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include", // ✅ add this
         body: JSON.stringify({
           name: firebaseResponse.user.displayName,
           email: firebaseResponse.user.email,
           profilePhotoUrl: firebaseResponse.user.photoURL,
         }),
    
-    credentials: "include", // ✅ add this
+    
           })
 
       const data = await res.json()

@@ -51,9 +51,10 @@ const SignInForm = () => {
       const res = await fetch(`${baseURL}/api/auth/signin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include", // ✅ add this
         body: JSON.stringify(values),
       
-    credentials: "include", // ✅ add this
+    
           })
 
       const data = await res.json()

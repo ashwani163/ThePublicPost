@@ -89,8 +89,9 @@ const DashboardProfile = () => {
       const res = await fetch(`${baseURL}/api/user/update/${currentUser._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
+        credentials: "include", // ✅ add this
         body: JSON.stringify(updateProfile),
-            credentials: "include", // ✅ add this
+            
 
       },
               )

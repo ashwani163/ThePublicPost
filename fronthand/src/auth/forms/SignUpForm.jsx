@@ -48,9 +48,10 @@ const signUpForm = () => {
       const res = await fetch( `${baseURL}/api/auth/signup`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
+        credentials: "include", // ✅ add this
         body: JSON.stringify(values),
       
-    credentials: "include", // ✅ add this
+    
           })
       const data = await res.json()
       if(data.success === false){
