@@ -18,20 +18,8 @@ const app = express();
 
 app.set("trust proxy", 1);
 
-// CORS setup
+// CORS — handles OPTIONS automatically
 app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://the-public-post-vmmm.vercel.app",
-    ],
-    credentials: true,
-  })
-);
-
-// Preflight requests — Express 5 SAFE
-app.options(
-  "*",
   cors({
     origin: [
       "http://localhost:5173",
