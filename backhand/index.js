@@ -29,9 +29,9 @@ app.use(
   })
 );
 
-// Preflight requests – FIXED
+// Preflight requests — Express 5 SAFE
 app.options(
-  "/*",
+  "*",
   cors({
     origin: [
       "http://localhost:5173",
@@ -44,12 +44,12 @@ app.options(
 app.use(express.json());
 app.use(cookieParser());
 
-// === ROUTES ===
+// ROUTES
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
 
-// === ERROR HANDLER ===
+// ERROR HANDLER
 app.use((err, req, res, next) => {
   res.status(err.statusCode || 500).json({
     success: false,
