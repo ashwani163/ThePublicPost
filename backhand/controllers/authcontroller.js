@@ -4,13 +4,13 @@ import { errorHandler } from "../utils/error.js";
 import jwt from "jsonwebtoken";
 
 // Helper function to set JWT cookie consistently
-const setTokenCookie = (res, token) => {
-  const isLocal = process.env.NODE_ENV !== "production"; // true on localhost
+// controllers/authcontroller.js
 
+const setTokenCookie = (res, token) => {
   res.cookie("access_token", token, {
     httpOnly: true,
-    secure: !isLocal,            // ✅ false on localhost, true in production
-    sameSite: isLocal ? "lax" : "none", // ✅ allows cross-origin on localhost
+    secure: true, // ✅ ALWAYS true for cross-site (Vercel -> Render)
+    sameSite: "none", // ✅ ALWAYS none for cross-site
     maxAge: 24 * 60 * 60 * 1000,
   });
 };

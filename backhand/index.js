@@ -1,3 +1,4 @@
+// index.js
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
@@ -16,33 +17,39 @@ mongoose
 
 const app = express();
 
+// 1. TRUST PROXY (Required for Render to handle secure cookies)
 app.set("trust proxy", 1);
 
-// CORS — handles OPTIONS automatically
+// 2. CORS MIDDLEWARE (Must be at the top)
 app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://the-public-post-vmmm.vercel.app",
+      "https://the-public-post-vmmm.vercel.app", // Your Vercel URL
     ],
-    credentials: true,
+    credentials: true, // Allows cookies to be sent
+    methods: ["GET", "POST", "PUT", "DELETE"], // Explicitly allow methods
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
+// 3. PARSERS
 app.use(express.json());
 app.use(cookieParser());
 
-// ROUTES
+// 4. ROUTES
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
 
 // ERROR HANDLER
 app.use((err, req, res, next) => {
-  res.status(err.statusCode || 500).json({
+  const statusCode = err.statusCode || 500;
+  const message = err.message || "Internal Server Error";
+  res.status(statusCode).json({
     success: false,
-    statusCode: err.statusCode || 500,
-    message: err.message || "Internal Server Error",
+    statusCode,
+    message,
   });
 });
 
